@@ -1,0 +1,129 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    text-decoration: none;
+    font-family: monospace;
+    box-sizing: border-box;
+}
+
+body, html{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span{
+    color: white;
+}
+
+button{
+    background-color: white;
+    color: black;
+    padding: 9px 18px;
+    border: none;
+    margin-right: 20px;
+    box-shadow: 0px 5px 0px 0px lime;
+    cursor: pointer;
+}
+
+button:active{
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+.active{
+    border: 2px solid lime;
+}
+
+.container{
+    height: 600px;
+    width: 900px;
+    background-color: rgb(15,15,15);
+    border: 1px solid lime;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.title-player{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    padding: 0px 70px;
+}
+
+.container-player{
+    border: 1px solid lime;
+    height: 400px;
+    width: 100%;
+    padding: 50px;
+}
+
+.img-area{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-area-01,.img-area-02{
+    height: 100px;
+    width: 100px;
+}
+
+.img-area-01 img, .img-area-02 img{
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+}
+
+.info-area{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(2, 80px);
+    padding-top: 30px;
+    gap: 25px;
+}
+
+.container-info-01, 
+.container-info-02,
+.container-info-03{
+    display: flex;
+}
+
+.container-info-01{
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container-info-02{
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.container-info-02 img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;    
+    margin-left: 20px;
+}
+
+.container-info-03{
+    grid-column: 1 / span 2;
+    grid-row: span 1 / span 2;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#warning{
+    color: white;
+    font-size: 20px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra, Papel e Tesoura</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title-player">
+            <h3>Você</h3>
+            <h3>Máquina</h3>
+        </div>
+        <div class="container-player">
+            <div class="img-area">
+                <div class="img-area-01">
+                    <img src="img/paper.webp" alt="">
+                    <span class="object-01">Papel</span>                    
+                </div>
+                <div class="img-area-02">
+                    <img src="img/paper.webp" alt="">
+                    <span class="object-02">Papel</span>                       
+                </div>
+            </div>
+            <div class="info-area">
+                <div class="container-info-01">
+                    <button id="play">Jogar</button>
+                    <button id="reset">Reiniciar</button>
+                </div>
+                <div class="container-info-02">
+                    <img src="img/paper.webp" data-object="0" class="active" alt="" id="paper-turn">
+                    <img src="img/stone.png" data-object="1" alt="" id="stone-turn">
+                    <img src="img/scissors.jpg" data-object="2" alt="" id="scissors-turn">
+                </div>
+                <div class="container-info-03">
+                    <div id="warning">--</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
