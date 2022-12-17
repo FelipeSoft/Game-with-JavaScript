@@ -4,8 +4,7 @@ const cs = (el) => document.querySelectorAll(el);
 
 var warning = '';
 var statusPlaying = false;
-var selectedObject = 0;
-var selectedMachine = 0;
+var selectedObject, selectedMachine = 0;
 
 resetGame();
 
@@ -19,9 +18,9 @@ cs('.container-info-02 img').forEach(element => {
 //functions
 function resetGame(){
     warning = 'Selecione o objeto e clique no botão "jogar" para iniciar.';
-    selectedObject = 0;
-    selectedMachine = 0;
+    selectedObject = selectedMachine = 0;
     statusPlaying = false;
+
     c('#play').style.display = 'block';
     c('.img-area-01 img').src = 'img/paper.webp';
     c('.object-01').innerHTML = 'Papel';
@@ -38,7 +37,7 @@ function startGame(e){
     statusPlaying = true;
 
     if(statusPlaying){
-        selectedMachine = Math.floor(Math.random() * 3);
+        selectedMachine = Math.floor(Math.random() * 3);        
         if(selectedMachine === 0){
             c('.img-area-02 img').src = 'img/paper.webp';
             c('.object-02').innerHTML = 'Papel';
@@ -50,6 +49,7 @@ function startGame(e){
             c('.object-02').innerHTML = 'Tesoura';
         }
     }
+
     checkGame();
     renderInfo();
 }
