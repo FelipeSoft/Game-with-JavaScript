@@ -7,6 +7,7 @@ var statusPlaying = false;
 var selectedObject, selectedMachine = 0;
 var playerPoints = 0;
 var machinePoints = 0;
+var difficult = 1;
 
 resetGame();
 
