@@ -5,6 +5,8 @@ const cs = (el) => document.querySelectorAll(el);
 var warning = '';
 var statusPlaying = false;
 var selectedObject, selectedMachine = 0;
+var playerPoints = 0;
+var machinePoints = 0;
 
 resetGame();
 
@@ -90,7 +92,11 @@ function checkGame(){
         warning = 'Jogo empatado!';
     } else if(possibilities.youWin.includes(nowPos)){
         warning = 'Você ganhou!';
+        playerPoints++;
     } else if(possibilities.youLose.includes(nowPos)){
         warning = 'A máquina ganhou!';
+        machinePoints++;
     }
+    c("div.score div.player").innerHTML = playerPoints;
+    c("div.score div.machine").innerHTML = machinePoints;
 }

@@ -127,3 +127,8 @@ button:active{
     color: white;
     font-size: 20px;
 }
+div.score{
+    color: #fff;
+    display: flex;
+    font-size: 2em;
+}
