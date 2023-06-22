@@ -7,7 +7,7 @@ var statusPlaying = false;
 var selectedObject, selectedMachine = 0;
 var playerPoints = 0;
 var machinePoints = 0;
-var difficult = 1;
+var difficult = '0';
 
 resetGame();
 
@@ -16,6 +16,9 @@ c('#play').addEventListener('click', startGame);
 c('#reset').addEventListener('click', resetGame);
 cs('.container-info-02 img').forEach(element => {
     element.addEventListener('click', changeObject)
+});
+cs('div.difficult button').forEach((element)=>{
+    element.addEventListener('click', selectedButton);
 });
 
 //functions
@@ -40,16 +43,46 @@ function startGame(e){
     statusPlaying = true;
 
     if(statusPlaying){
-        selectedMachine = Math.floor(Math.random() * 3);        
-        if(selectedMachine === 0){
-            c('.img-area-02 img').src = 'img/paper.webp';
-            c('.object-02').innerHTML = 'Papel';
-        } else if(selectedMachine === 1){
-            c('.img-area-02 img').src = 'img/stone.png';
-            c('.object-02').innerHTML = 'Pedra';
-        } else {
-            c('.img-area-02 img').src = 'img/scissors.jpg';
-            c('.object-02').innerHTML = 'Tesoura';
+        switch(difficult){
+            case '0':
+                selectedMachine = randomNumberWithProbability([90, 80, 70])
+                if(selectedMachine == 0){
+                    c('.img-area-02 img').src = 'img/paper.webp';
+                    c('.object-02').innerHTML = 'Papel';
+                } else if(selectedMachine == 1){
+                    c('.img-area-02 img').src = 'img/stone.png';
+                    c('.object-02').innerHTML = 'Pedra';
+                } else {
+                    c('.img-area-02 img').src = 'img/scissors.jpg';
+                    c('.object-02').innerHTML = 'Tesoura';
+                }
+            break;
+            case '1':
+                selectedMachine = randomNumberWithProbability([20, 25, 30])
+                if(selectedMachine == 0){
+                    c('.img-area-02 img').src = 'img/paper.webp';
+                    c('.object-02').innerHTML = 'Papel';
+                } else if(selectedMachine == 1){
+                    c('.img-area-02 img').src = 'img/stone.png';
+                    c('.object-02').innerHTML = 'Pedra';
+                } else {
+                    c('.img-area-02 img').src = 'img/scissors.jpg';
+                    c('.object-02').innerHTML = 'Tesoura';
+                }
+            break;
+            case '2':
+                selectedMachine = randomNumberWithProbability([5, 10, 15])
+                if(selectedMachine == 0){
+                    c('.img-area-02 img').src = 'img/paper.webp';
+                    c('.object-02').innerHTML = 'Papel';
+                } else if(selectedMachine == 1){
+                    c('.img-area-02 img').src = 'img/stone.png';
+                    c('.object-02').innerHTML = 'Pedra';
+                } else {
+                    c('.img-area-02 img').src = 'img/scissors.jpg';
+                    c('.object-02').innerHTML = 'Tesoura';
+                }
+            break;
         }
     }
 
@@ -63,10 +96,10 @@ function changeObject(e){
         e.target.classList.add('active');
         selectedObject = parseInt(e.target.getAttribute('data-object'));
 
-        if(selectedObject === 0){
+        if(selectedObject == 0){
             c('.img-area-01 img').src = 'img/paper.webp';
             c('.object-01').innerHTML = 'Papel';
-        } else if(selectedObject === 1){
+        } else if(selectedObject == 1){
             c('.img-area-01 img').src = 'img/stone.png';
             c('.object-01').innerHTML = 'Pedra';
         } else {
@@ -74,6 +107,18 @@ function changeObject(e){
             c('.object-01').innerHTML = 'Tesoura';
         }
     }
+}
+
+function selectedButton(e){
+    if(!statusPlaying){
+        c('div.difficult button.selected').classList.remove('selected');
+        e.target.classList.add('selected');
+    }
+    difficult = (e.target.getAttribute('index'));
+    machinePoints = playerPoints = 0;
+
+    c("div.score div.player").innerHTML = playerPoints;
+    c("div.score div.machine").innerHTML = machinePoints;
 }
 
 function renderInfo(){
@@ -86,8 +131,8 @@ function checkGame(){
     })
     c('#play').style.display = 'none';
 
-    let possibilities = {draw: [00, 11, 22], youWin: [01, 12, 20], youLose: [10, 21, 02]}
-    let nowPos = parseInt(`${selectedObject}${selectedMachine}`);
+    let possibilities = {draw: ['00', '11', '22'], youWin: ['01', '12', '20'], youLose: ['10', '21', '02']}
+    let nowPos = `${selectedObject}${selectedMachine}`;
     
     if(possibilities.draw.includes(nowPos)){
         warning = 'Jogo empatado!';
@@ -100,4 +145,21 @@ function checkGame(){
     }
     c("div.score div.player").innerHTML = playerPoints;
     c("div.score div.machine").innerHTML = machinePoints;
+}
+
+function randomNumberWithProbability(probabilities){
+  const sumOfProbabilities = probabilities.reduce((accumulator, probability) => accumulator + probability, 0);
+
+  const randomNumber = Math.random() * sumOfProbabilities;
+
+  let floorLimit = 0;
+  for (let i = 0; i < probabilities.length; i++) {
+    const ceilLimit = floorLimit + probabilities[i];
+
+    if (randomNumber >= floorLimit && randomNumber < ceilLimit) {
+      return i; 
+    }
+
+    floorLimit = ceilLimit;
+  }
 }

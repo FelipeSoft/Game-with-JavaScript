@@ -24,16 +24,17 @@ button{
     color: black;
     padding: 9px 18px;
     border: none;
-    margin-right: 20px;
     box-shadow: 0px 5px 0px 0px #00ff00;
     cursor: pointer;
 }
 
-button:active{
+button:active, button.selected:active{
     transform: translateY(5px);
     box-shadow: none;
 }
-
+#play{
+    margin-right: 20px;
+}
 .active{
     border: 2px solid #00ff00;
 }
@@ -99,20 +100,20 @@ button:active{
 }
 
 .container-info-01{
+    align-items: center;
+    justify-content:flex-end;
+}
+.container-info-02{
     justify-content: flex-start;
     align-items: center;
 }
 
-.container-info-02{
-    align-items: center;
-    justify-content:flex-end;
-}
 
 .container-info-02 img{
     width: 50px;
     height: 50px;
     object-fit: cover;    
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .container-info-03{
@@ -136,20 +137,9 @@ div.score{
 div.difficult{
     margin-top: 30px;
 }
-button.easy{
-    background-color: #00f;
-    color: #fff;
-    box-shadow: none;
-}
-
-button.medium{
-    background-color:#ffee00;
-    color: #000;
-    box-shadow: none;
-}
-
-button.hard{
-    background-color: #f00;
-    color: #fff;
-    box-shadow: none;
+button.selected{
+    background-color: #000;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    box-shadow: 0px 5px 0px 0px #00ff00;;
 }

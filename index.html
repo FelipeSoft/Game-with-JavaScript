@@ -31,14 +31,14 @@
                 </div>
             </div>
             <div class="info-area">
-                <div class="container-info-01">
-                    <button id="play">Jogar</button>
-                    <button id="reset">Reiniciar</button>
-                </div>
                 <div class="container-info-02">
                     <img src="img/paper.webp" data-object="0" class="active" alt="" id="paper-turn">
                     <img src="img/stone.png" data-object="1" alt="" id="stone-turn">
                     <img src="img/scissors.jpg" data-object="2" alt="" id="scissors-turn">
+                </div>
+                <div class="container-info-01">
+                    <button id="play">Jogar</button>
+                    <button id="reset">Reiniciar</button>
                 </div>
                 <div class="container-info-03">
                     <div id="warning">--</div>
@@ -46,9 +46,9 @@
             </div>
         </div>
         <div class="difficult">
-            <button class="easy">Fácil</button>
-            <button class="medium">Médio</button>
-            <button class="hard">Difícil</button>
+            <button id="easy" class="selected" index="0">Fácil</button>
+            <button id="medium" index="1" >Médio</button>
+            <button id="hard" index="2" >Difícil</button>
         </div>
     </div>
 </body>
